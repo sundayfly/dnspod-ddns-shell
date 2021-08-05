@@ -16,7 +16,9 @@ record_value=$(echo ${record_info} | grep -Po "(?<=\"value\":\")([0-9\.]*)")
 record_line_id=$(echo ${record_info} | grep -Po "(?<=\"line_id\":\")([0-9\.]*)")
 echo "${SUB_DOMAIN}:${DOMAIN} record_id: ${record_id}, record_line_id: ${record_line_id}, record_value: ${record_value}"
 
-local_ip=$(curl -s ns1.dnspod.net:6666)
+
+local_ip=$(curl -s https://api.ipify.org)
+#local_ip=$(curl -s ns1.dnspod.net:6666)
 echo "local ip: ${local_ip}"
 
 if [[ $record_value != $local_ip ]];then
